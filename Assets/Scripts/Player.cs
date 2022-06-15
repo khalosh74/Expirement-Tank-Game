@@ -17,11 +17,12 @@ public class Player : MonoBehaviour
     [Header("XP")]
     [SerializeField] private int xp = 0;
 
-    Stats playerMovmentStats;
+    MovementSats playerMovmentStats;
     PlayerStats playerStats;
     XPStats playerXPStats;
     private Weapon weapon;
     [SerializeField] private Material material;
+    [SerializeField] private LayerMask targetLayer;
 
     void Start()
     {
@@ -42,7 +43,7 @@ public class Player : MonoBehaviour
     void ConstructPlayer()
     {
         playerStats = new PlayerStats(heartContainers, hearts, shield, shieldRegenerationSpeed, gameObject);
-        playerMovmentStats = new Stats(acceleration, deceleration, maxSpeed, transform);
+        playerMovmentStats = new MovementSats(acceleration, deceleration, maxSpeed, transform);
         playerXPStats = new XPStats(xp);
     }
 

@@ -373,6 +373,7 @@
 "Assets/Scripts/CallbacSystem/ShootListener.cs"
 "Assets/Scripts/Cover.cs"
 "Assets/Scripts/EnemyAI.cs"
+"Assets/Scripts/MovementSats.cs"
 "Assets/Scripts/Nodes/AttackNode.cs"
 "Assets/Scripts/Nodes/ChaseNode.cs"
 "Assets/Scripts/Nodes/ChasingInRangeNode.cs"

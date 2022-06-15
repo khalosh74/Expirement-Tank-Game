@@ -52,6 +52,9 @@ MonoBehaviour:
   acceleration: 200
   maxSpeed: 10
   tagToHit: Player
+  mask:
+    serializedVersion: 2
+    m_Bits: 576
   holderObject: {fileID: 0}
 --- !u!212 &7448278713156754258
 SpriteRenderer:

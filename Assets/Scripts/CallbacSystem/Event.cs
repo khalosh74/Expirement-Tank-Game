@@ -41,5 +41,4 @@ public class PlayerKillsEnemyEvent : Event<PlayerKillsEnemyEvent>
 public class ShootEvent : Event<ShootEvent>
 {
     public GameObject holder;
-
 }

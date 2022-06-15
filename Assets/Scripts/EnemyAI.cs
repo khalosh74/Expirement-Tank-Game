@@ -12,13 +12,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float acceleration = 20f;
     [SerializeField] private float deceleration = 22f;
     [SerializeField] private float maxSpeed = 10f;
-    [Header("Default Attack")]
+    [Header("Attack")]
     [SerializeField] private float attackSpeed = 2;// 2 shots per second
     [SerializeField] private int damge = 25;
+    [SerializeField] private LayerMask targetLayer;
     private Transform _transform;
     private Transform playerTransform;
     Stats enemyStats;
-
+    MovementSats enemyMovementSats;
 
     [Header("AI")]
     [SerializeField] private float chasingRange;
@@ -57,16 +58,15 @@ public class EnemyAI : MonoBehaviour
 
     void Construct()
     {
-        enemyStats = new Stats(health, healthRegenerationSpeed,
-            acceleration, deceleration, maxSpeed,
-            _transform, material);
+        enemyStats = new Stats(health, healthRegenerationSpeed, material, targetLayer);
+        enemyMovementSats = new MovementSats(acceleration, deceleration, maxSpeed, _transform);
     }
     private void ConstructBehahaviourTree()
     {
         //HealthNode healthNode = new HealthNode(this, lowHealthThreshold);
         ChaseNode chaseNode = new ChaseNode(playerTransform, this);
-        ChasingInRangeNode chasingInRangeNode = new ChasingInRangeNode(chasingRange, playerTransform, transform);
-        RangeNode shootingRangeNode = new RangeNode(shootingRange, playerTransform, transform);
+        ChasingInRangeNode chasingInRangeNode = new ChasingInRangeNode(chasingRange, playerTransform, _transform);
+        RangeNode shootingRangeNode = new RangeNode(shootingRange, playerTransform, _transform);
         AttackNode attackNode = new AttackNode( this, playerTransform, player, damge, attackSpeed, this.gameObject.GetComponentInChildren<Weapon>());
         IsPlayerDeadNode isPlayerDeadNode = new IsPlayerDeadNode(player);
         //Sequence playerDeathSequence = new Sequence(new List<Node> { isPlayerDeadNode });
@@ -86,7 +86,7 @@ public class EnemyAI : MonoBehaviour
 
     public void Movement(Vector2 distacne)
     {
-        enemyStats.Movement(distacne);
+        enemyMovementSats.Movement(distacne);
     }
     public void GetHurt(float amountDamge)
     {

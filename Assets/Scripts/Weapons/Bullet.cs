@@ -8,16 +8,16 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float durabilityime = 4;
     [SerializeField] private float acceleration = 100;
     [SerializeField] private float maxSpeed = 15f;
-    [SerializeField] private string tagToHit;
+    [SerializeField] private LayerMask mask;
     private Vector3 shootDirection;
-    Stats stats;
+    MovementSats stats;
     BulletStats bulletStats;
     public GameObject holderObject;
 
     // Start is called before the first frame update
     void Start()
     {
-        Build();
+        ConstructSpeed();
     }
 
     // Update is called once per frame
@@ -44,31 +44,22 @@ public class Bullet : MonoBehaviour
     }
     void ConstructSpeed()
     {
-        stats = new Stats(acceleration, maxSpeed, transform);
+        stats = new MovementSats(acceleration, maxSpeed, transform);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (tagToHit != other.gameObject.tag) return;
-        bulletStats = new BulletStats(damge, holderObject, other.gameObject);
-        
-            bulletStats.getObjectStats();
-        
+        bulletStats = new BulletStats(damge, other.gameObject);
+        if ((mask & 1 << other.gameObject.layer) != 1 << other.gameObject.layer) return;
+        bulletStats.AttackGameObject();
         Destroy(gameObject);
-        //if (other.gameObject.tag == gameObject.tag || other.gameObject.tag == holderObject.tag) return;
-        //bulletStats = new BulletStats(damge, holderObject, other.gameObject);
-        //if (other.gameObject.tag != holderObject.tag)
-        //{
-        //    bulletStats.getObjectStats();
-        //}
-        //Destroy(gameObject);
-    }
-    void Build()
-    {
-        ConstructSpeed();
     }
     public void setHolderObject(GameObject _gameObject)
     {
         holderObject = _gameObject;
+    }
+    public void setTargetMask()
+    {
+
     }
 }

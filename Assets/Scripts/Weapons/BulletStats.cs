@@ -5,21 +5,15 @@ using UnityEngine;
 public class BulletStats
 {
     [SerializeField] private int damge = 25;
-    [SerializeField] private GameObject thisObject;
     [SerializeField] private GameObject target;
 
 
-    public BulletStats(int damge, GameObject thisObject, GameObject target)
+    public BulletStats(int damge, GameObject target)
     {
         this.damge = damge;
-        this.thisObject = thisObject;
         this.target = target;
     }
-    public GameObject getThisGameObject()
-    {
-        return thisObject;
-    }
-    public void getObjectStats()
+    public void AttackGameObject()
     {
         switch (target.tag)
         {

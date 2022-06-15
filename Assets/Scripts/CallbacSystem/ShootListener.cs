@@ -14,6 +14,7 @@ public class ShootListener : MonoBehaviour
 
     private void shooting(ShootEvent info)
     {
+        if(info.holder != null)
         weaponHolder.setHolderObject(info.holder);
     }
 }

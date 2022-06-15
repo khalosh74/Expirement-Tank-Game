@@ -52,6 +52,9 @@ MonoBehaviour:
   acceleration: 200
   maxSpeed: 10
   tagToHit: Enemy
+  mask:
+    serializedVersion: 2
+    m_Bits: 128
   holderObject: {fileID: 0}
 --- !u!212 &619856276623589303
 SpriteRenderer:
