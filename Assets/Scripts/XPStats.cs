@@ -23,7 +23,6 @@ public class XPStats
     {
         if(xp >= nextLevelXP)
         {
-            Debug.Log("next level");
             level++;
             ChangeNextLevelXP();
         }

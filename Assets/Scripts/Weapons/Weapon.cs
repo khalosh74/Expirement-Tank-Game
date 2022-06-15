@@ -8,18 +8,11 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float attackSpeed = 2f;// 2 shots per second
     [SerializeField] private Transform bullet;
     [SerializeField] private Transform bulletsSpawnPoint;
-    float timer = 1;
+    public float timer = 1;
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
-        {
-            Shoot();
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            timer = 1;
-        }
+
     }
     public void Shoot()
     {

@@ -8,11 +8,11 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float durabilityime = 4;
     [SerializeField] private float acceleration = 100;
     [SerializeField] private float maxSpeed = 15f;
+    [SerializeField] private string tagToHit;
     private Vector3 shootDirection;
     Stats stats;
     BulletStats bulletStats;
     public GameObject holderObject;
-    [SerializeField] private Weapon weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -49,16 +49,26 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (holderObject == null) return;
+        if (tagToHit != other.gameObject.tag) return;
         bulletStats = new BulletStats(damge, holderObject, other.gameObject);
-        if (other.gameObject != holderObject)
-        {
+        
             bulletStats.getObjectStats();
-        }
+        
         Destroy(gameObject);
+        //if (other.gameObject.tag == gameObject.tag || other.gameObject.tag == holderObject.tag) return;
+        //bulletStats = new BulletStats(damge, holderObject, other.gameObject);
+        //if (other.gameObject.tag != holderObject.tag)
+        //{
+        //    bulletStats.getObjectStats();
+        //}
+        //Destroy(gameObject);
     }
     void Build()
     {
         ConstructSpeed();
+    }
+    public void setHolderObject(GameObject _gameObject)
+    {
+        holderObject = _gameObject;
     }
 }

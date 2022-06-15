@@ -11,14 +11,16 @@ public class AttackNode : Node
     private GameObject player;
     private int damge;
     private float attackSpeed;
+    private Weapon weapon;
 
-    public AttackNode(EnemyAI ai, Transform target, GameObject player, int damge, float attackSpeed)
+    public AttackNode(EnemyAI ai, Transform target, GameObject player, int damge, float attackSpeed, Weapon weapon)
     {
         this.ai = ai;
         this.target = target;
         this.player = player;
         this.attackSpeed = attackSpeed;
         this.damge = damge;
+        this.weapon = weapon;
     }
 
     public override NodeState Evaluate()
@@ -35,6 +37,11 @@ public class AttackNode : Node
     float timer = 1;
     void attack()
     {
+        if (weapon != null)
+        {
+            weapon.Shoot();
+            return;
+        }
         timer += Time.deltaTime;
         if (timer > attackSpeed)
         {

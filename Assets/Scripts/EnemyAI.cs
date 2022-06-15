@@ -67,7 +67,7 @@ public class EnemyAI : MonoBehaviour
         ChaseNode chaseNode = new ChaseNode(playerTransform, this);
         ChasingInRangeNode chasingInRangeNode = new ChasingInRangeNode(chasingRange, playerTransform, transform);
         RangeNode shootingRangeNode = new RangeNode(shootingRange, playerTransform, transform);
-        AttackNode attackNode = new AttackNode( this, playerTransform, player, damge, attackSpeed);
+        AttackNode attackNode = new AttackNode( this, playerTransform, player, damge, attackSpeed, this.gameObject.GetComponentInChildren<Weapon>());
         IsPlayerDeadNode isPlayerDeadNode = new IsPlayerDeadNode(player);
         //Sequence playerDeathSequence = new Sequence(new List<Node> { isPlayerDeadNode });
 

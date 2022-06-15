@@ -20,17 +20,20 @@ public class Player : MonoBehaviour
     Stats playerMovmentStats;
     PlayerStats playerStats;
     XPStats playerXPStats;
+    private Weapon weapon;
     [SerializeField] private Material material;
 
     void Start()
     {
         //hearts = heartContainers;
         ConstructPlayer();
+        weapon = gameObject.GetComponentInChildren<Weapon>();
     }
     void Update()
     {
         Rotate();
         Controllers();
+        Shoot();
         RegeneratShield();
         CurrentXPDeffrence();
         LevelUp();
@@ -109,5 +112,16 @@ public class Player : MonoBehaviour
     public int getLevel()
     {
         return playerXPStats.getLevel();
+    }
+    public void Shoot()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            weapon.Shoot();
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            weapon.timer = 1;
+        }
     }
 }

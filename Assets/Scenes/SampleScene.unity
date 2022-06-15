@@ -800,7 +800,7 @@ GameObject:
   - component: {fileID: 371184794}
   - component: {fileID: 371184795}
   - component: {fileID: 371184796}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1907,7 +1907,7 @@ GameObject:
   - component: {fileID: 1030120423}
   - component: {fileID: 1030120425}
   - component: {fileID: 1030120424}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2123,7 +2123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1198804595}
   - component: {fileID: 1198804596}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerKillsEnemyListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2167,7 +2167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1222598575}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Listeners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3684,7 +3684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2098813129}
   - component: {fileID: 2098813130}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ShootListener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3778,6 +3778,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1836456078102533807, guid: deabee4593f24ce4893e2c9e4573ef83, type: 3}
+      propertyPath: shootingRange
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deabee4593f24ce4893e2c9e4573ef83, type: 3}
 --- !u!1001 &4208939213580420165
@@ -3790,6 +3794,10 @@ PrefabInstance:
     - target: {fileID: 4208939213195456515, guid: 17589383db2abb54d8e9f0daa126412e, type: 3}
       propertyPath: m_Name
       value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208939213195456515, guid: 17589383db2abb54d8e9f0daa126412e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4208939213195456524, guid: 17589383db2abb54d8e9f0daa126412e, type: 3}
       propertyPath: m_RootOrder
@@ -3834,6 +3842,10 @@ PrefabInstance:
     - target: {fileID: 4208939213195456524, guid: 17589383db2abb54d8e9f0daa126412e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4208939213462526238, guid: 17589383db2abb54d8e9f0daa126412e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17589383db2abb54d8e9f0daa126412e, type: 3}
