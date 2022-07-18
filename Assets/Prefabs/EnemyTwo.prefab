@@ -127,6 +127,9 @@ MonoBehaviour:
   maxSpeed: 5
   attackSpeed: 0.5
   damge: 10
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64
   chasingRange: 0
   shootingRange: 1
 --- !u!58 &1162172419344026400

@@ -10,10 +10,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Transform bulletsSpawnPoint;
     public float timer = 1;
 
-    private void Update()
-    {
-
-    }
     public void Shoot()
     {
         timer += Time.deltaTime;
@@ -28,5 +24,9 @@ public class Weapon : MonoBehaviour
             bulletTransform.GetComponent<Bullet>().Setup(-shootDirection);
             timer = 0;
         }
+    }
+    public void setAttackSpeed(float attackSpeed)
+    {
+        this.attackSpeed *= attackSpeed;
     }
 }

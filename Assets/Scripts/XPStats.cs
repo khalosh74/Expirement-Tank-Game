@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,11 @@ public class XPStats
     private float deffrence = 10;
     private int currentDeffrence = 0;
 
-    public XPStats(int xp)
+    public XPStats(int xp, int nextLevelXP, int level)
     {
         this.xp = xp;
+        this.nextLevelXP = nextLevelXP;
+        this.level = level;
     }
     public void IncreaseXP(int amount)
     {
@@ -21,15 +24,18 @@ public class XPStats
     }
     public void LevelUp()
     {
-        if(xp >= nextLevelXP)
+        if (xp >= nextLevelXP)
         {
+            NextLevelEvent nextLevelEvent = new NextLevelEvent();
+            nextLevelEvent.FireEvent();
+            //GenerateRandomUpgrade();
             level++;
             ChangeNextLevelXP();
         }
     }
     private void ChangeNextLevelXP()
     {
-        nextLevelXP *= 2;
+        nextLevelXP = (nextLevelXP* 3);
         deffrence = (nextLevelXP - xp);
     }
     public float XPProcentTllNextLevel()
@@ -44,4 +50,18 @@ public class XPStats
     {
         return level;
     }
+    private void GenerateRandomUpgrade()
+    {
+        foreach (Upgrades upgrade in (Upgrades[]) Enum.GetValues(typeof(Upgrades)))
+        {
+            Debug.Log(upgrade);
+        }
+    }
 }
+    public enum Upgrades
+    {
+        Speed,
+        FireRate,
+        AttackDamge,
+        
+    }

@@ -5,16 +5,17 @@ using UnityEngine;
 
 public class ShootListener : MonoBehaviour
 {
-    [SerializeField] private Bullet weaponHolder;
+    private ListenerManager listenerManager;
     // Start is called before the first frame update
     void Start()
     {
+        listenerManager = GetComponentInParent<ListenerManager>();
         ShootEvent.RegisterListener(shooting);
     }
 
     private void shooting(ShootEvent info)
     {
         if(info.holder != null)
-        weaponHolder.setHolderObject(info.holder);
+            listenerManager.getWeaponHolder().setHolderObject(info.holder);
     }
 }

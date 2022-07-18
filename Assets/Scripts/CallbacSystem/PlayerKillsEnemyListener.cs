@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class PlayerKillsEnemyListener : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    private ListenerManager listenerManager;
     void Start()
     {
+        listenerManager = GetComponentInParent<ListenerManager>();
         PlayerKillsEnemyEvent.RegisterListener(IncreaseXP);
-        player = transform.parent.parent.gameObject;
     }
 
     private void IncreaseXP(PlayerKillsEnemyEvent info)
     {
-        player.GetComponent<Player>().IncreaseXP(info.xpAmount);
+        listenerManager.getPlayer().GetComponent<Player>().IncreaseXP(info.xpAmount);
     }
 }

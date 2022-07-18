@@ -42,3 +42,7 @@ public class ShootEvent : Event<ShootEvent>
 {
     public GameObject holder;
 }
+public class NextLevelEvent : Event<NextLevelEvent>
+{
+	public int nextLevel;
+}

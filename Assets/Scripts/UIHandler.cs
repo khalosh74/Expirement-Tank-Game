@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UIHandler : MonoBehaviour
 {
     [SerializeField] private Slider shieldSlider;
     [SerializeField] private Slider xpSlider;
     [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private GameObject upgradePanel;
+    [SerializeField] private Button[] buttons;
+    [SerializeField] private GameObject speedIcon, FirRateIcon, attackDamgeIcon;
     [SerializeField] private List<GameObject> hearts = new List<GameObject>();
     [SerializeField] private Player player;
-    // Start is called before the first frame update
+    private Weapon playerWeapon;
+
     void Start()
     {
-        
+        upgradePanel.SetActive(false);
     }
-
-    // Update is called once per frame
     void Update()
     {
         ShieldBar();
@@ -46,4 +49,64 @@ public class UIHandler : MonoBehaviour
         levelText.text = "Level " + player.getLevel().ToString();
     }
 
+    public void ShowUpgradePanel()
+    {
+        playerWeapon = player.GetComponentInChildren<Weapon>();
+        PauseGame();
+        upgradePanel.SetActive(true);
+    }
+    public void HideUpgradePanel()
+    {
+        ResumeGame();
+        upgradePanel.SetActive(false);
+    }
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+    void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
+    public void AssaignUpgradeButtons()
+    {
+        for(int i=0; i < buttons.Length; i++)
+        {
+            var x = i;
+            buttons[i].onClick.AddListener(() => doTask(x));
+            ShowIcons(x);
+        }
+    }
+    public void doTask(int index)
+    {
+        switch ((Upgrades)index)
+        {
+            case Upgrades.Speed:
+                player.setSpeed(2);
+                break;
+            case Upgrades.AttackDamge:
+                break;
+            case Upgrades.FireRate:
+                playerWeapon.setAttackSpeed(0.9f);
+                break;
+        }
+    }
+    private void ShowIcons(int index)
+    {
+        switch ((Upgrades)index)
+        {
+            case Upgrades.Speed:
+                Instantiate(speedIcon, buttons[index].gameObject.transform);
+                break;
+            case Upgrades.AttackDamge:
+                Instantiate(attackDamgeIcon, buttons[index].gameObject.transform);
+                break;
+            case Upgrades.FireRate:
+                Instantiate(FirRateIcon, buttons[index].gameObject.transform);
+                break;
+        }
+    }
+
+
+    //Upgrades upgrade in (Upgrades[])Enum.GetValues(typeof(Upgrades))
 }

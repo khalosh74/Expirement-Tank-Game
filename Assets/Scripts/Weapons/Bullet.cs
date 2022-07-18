@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         ConstructSpeed();
+        gameObject.transform.localScale = new Vector2(1, 20 / maxSpeed);
     }
 
     // Update is called once per frame

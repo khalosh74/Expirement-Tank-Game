@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
         for(int i = 0; i < spawnList.Count; i++)
         {
             GameObject clone = Instantiate(spawnList[i]);
-            clone.transform.position = new Vector2(Random.Range(-screenBounds.x * -1.2f, screenBounds.x * -1.2f), Random.Range(-screenBounds.y * -1.2f, screenBounds.y * -1.2f));
+            clone.transform.position = new Vector2(Random.Range(-screenBounds.x * -1.5f, screenBounds.x * -1.5f), Random.Range(-screenBounds.y * -1.5f, screenBounds.y * -1.5f));
         }
     }
     float timer = 0;

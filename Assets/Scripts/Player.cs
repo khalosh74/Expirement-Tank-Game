@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxSpeed = 10f;
     [Header("XP")]
     [SerializeField] private int xp = 0;
+    [SerializeField] private int nextLevelXP = 10;
+    [SerializeField] private int level = 1;
 
     MovementSats playerMovmentStats;
     PlayerStats playerStats;
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
     {
         playerStats = new PlayerStats(heartContainers, hearts, shield, shieldRegenerationSpeed, gameObject);
         playerMovmentStats = new MovementSats(acceleration, deceleration, maxSpeed, transform);
-        playerXPStats = new XPStats(xp);
+        playerXPStats = new XPStats(xp, nextLevelXP, level);
     }
 
     void Death()
@@ -124,5 +126,12 @@ public class Player : MonoBehaviour
         {
             weapon.timer = 1;
         }
+    }
+    public void setSpeed(int speed)
+    {
+        acceleration += speed * 10;
+        deceleration += speed * 10;
+        maxSpeed += speed;
+        playerMovmentStats = new MovementSats(acceleration, deceleration, maxSpeed, transform);
     }
 }
