@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
         if (IsDead())
         {
             gameObject.SetActive(false);
+            Application.Quit();
         }
     }
     void Controllers()
